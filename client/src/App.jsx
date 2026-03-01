@@ -10,7 +10,7 @@ import RoleBasedRoute from "./components/RoleBasedRoute.jsx";
 import Admin from "./pages/Admin";
 import Partner from "./pages/Partner";
 import SingleMovie from "./pages/SingleMovie";
-import BookShow from "./pages/BookShow";
+import BookShow from "./pages/Bookshow";
 import PaymentSuccess from "./pages/PaymentSuccess.jsx";
 import MyBookings from "./pages/User/MyBooking.jsx";
 import AiChatbot from "./components/AIChatbot";
