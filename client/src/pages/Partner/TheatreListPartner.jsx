@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllTheatres } from "../../backend/theatre";
 import { getCurrentUser } from "../../backend/auth";
 import { setUserData } from "../../redux/userSlice";
-import ShowModal from "./ShowModal";
+import ShowModal from "./showModal";
 
 const TheatreListPartner = () => {
   const [theatres, setTheatres] = useState(null);
