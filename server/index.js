@@ -16,6 +16,10 @@ const movieRoutes = require("./routes/movie.route.js");
 const theatreRoutes = require("./routes/theatre.route.js");
 const showRoutes = require("./routes/show.route.js");
 const bookingRoutes = require("./routes/booking.route.js");
+const aiRoutes = require("./routes/ai.route.js");
+
+const dns = require("dns");
+dns.setServers(["8.8.8.8", "8.8.4.4"])
 
 
 const limiter = rateLimit({
@@ -33,9 +37,22 @@ app.post(
   express.raw({ type: "application/json" }),
   async (req, res) => {
     // Import webhook handler
-    const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-    const Booking = require("./models/booking.model.js");
-    const Show = require("./models/show.model.js");
+      const Booking = require("./models/booking.model.js");
+      const Show = require("./models/show.model.js");
+
+      const stripeSecret = process.env.STRIPE_SECRET_KEY;
+      if (!stripeSecret) {
+        console.error("STRIPE_SECRET_KEY is not set - webhook cannot be processed");
+        return res.status(500).send("Stripe not configured on server");
+      }
+
+      let stripe;
+      try {
+        stripe = require("stripe")(stripeSecret);
+      } catch (err) {
+        console.error("Failed to initialize Stripe:", err?.message || err);
+        return res.status(500).send("Stripe initialization failed");
+      }
 
     const sig = req.headers["stripe-signature"];
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -144,7 +161,9 @@ app.use("/api/movie", movieRoutes);
 app.use("/api/theatre", theatreRoutes);
 app.use("/api/shows", showRoutes);
 app.use("/api/booking", bookingRoutes);
+app.use("/api/ai", aiRoutes);
 
 app.listen(8001, () => {
   console.log("Server started..");
+  console.log("MONGO_DB_URL =", process.env.MONGO_DB_URL);
 });

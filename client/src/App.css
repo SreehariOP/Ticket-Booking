@@ -373,6 +373,54 @@ hr {
   width: 100%;
 }
 
+/* Floating AI button */
+.ai-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  min-height: unset; /* your global button min-height */
+  width: 56px;
+  height: 56px;
+}
+
+/* Chat area */
+.ai-chat-body {
+  height: calc(100vh - 200px);
+  overflow: auto;
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ai-bubble {
+  max-width: 85%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  word-break: break-word;
+}
+
+.ai-bubble.user {
+  align-self: flex-end;
+  background: #e6f7ff;
+  border-color: #91d5ff;
+}
+
+.ai-bubble.bot {
+  align-self: flex-start;
+  background: #fafafa;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .ai-fab {
+    right: 14px;
+    bottom: 14px;
+  }
+}
+
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);

@@ -13,6 +13,7 @@ import SingleMovie from "./pages/SingleMovie";
 import BookShow from "./pages/BookShow";
 import PaymentSuccess from "./pages/PaymentSuccess.jsx";
 import MyBookings from "./pages/User/MyBooking.jsx";
+import AiChatbot from "./components/AIChatbot";
 
 function App() {
   return (
@@ -116,6 +117,7 @@ function App() {
             }
           />
         </Routes>
+        <AiChatbot />
       </BrowserRouter>
     </>
   );
