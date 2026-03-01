@@ -13,7 +13,7 @@ import SingleMovie from "./pages/SingleMovie";
 import BookShow from "./pages/Bookshow";
 import PaymentSuccess from "./pages/PaymentSuccess.jsx";
 import MyBookings from "./pages/User/MyBooking.jsx";
-import AiChatbot from "./components/AIChatbot";
+import AiChatbot from "./components/AiChatbot";
 
 function App() {
   return (
